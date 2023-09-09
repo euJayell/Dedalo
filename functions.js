@@ -73,7 +73,7 @@ function getPrimorial(prime, first = 2) {
   for( let t = 0n; t <= instances; t++) {
     let start  = t * 2000n + 1n
     let end = (t-instances !== 0n ? 2000n * (t + 1n) : 2000n * (t) + 1n) + (t - instances === 0n ? 1n : 0n)*overflow
-    let primes = getPrimeNumbers(end)
+    let primes = getPrimeNumbers(end, start)
     
     console.log(`start: ${start} | end: ${end} | primes: ${primes}`)
     
@@ -81,4 +81,3 @@ function getPrimorial(prime, first = 2) {
   } return result
   
 }
-//getPrimorial(4050) needs fix

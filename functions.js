@@ -85,7 +85,7 @@ function getPrimorial(prime, first = 2) {
 function getNextPrimeNumber(prime) {
   
   let p = BigInt(prime)
-  let next = p + 2n
+  let next = p % 2n === 0n ? p + 1n : p + 2n
   const check = isPrimeNumber(p)
   
   if(!check) { while (!isPrimeNumber(p)) { p += 1n } return p }

@@ -59,37 +59,33 @@ function getTwinPrimeNumbers(end, start = 2) {
   
 }
 
-function getPrimorial(prime, first = 2) {
+function getNextPrimeNumber(prime, isInt = false) {
   
-  prime = BigInt(prime)
-  first = BigInt(first)
+  let p = BigInt(prime)
+  let next = p + 1n
   
-  const range = prime - first + 1n
-  const instances = range / 2000n
-  const overflow = range % 2000n
-  
-  let result = 1n
-  
-  for( let t = 0n; t <= instances; t++) {
-    let start  = t * 2000n + 1n
-    let end = (t-instances !== 0n ? 2000n * (t + 1n) : 2000n * (t) + 1n) + (t - instances === 0n ? 1n : 0n)*overflow
-    let primes = getPrimeNumbers(end, start)
+
+  while (!isPrimeNumber(next, isInt)) { 
+    const mod = (next < 0n) ? ( (next % 2n) * -1n) : next % 2n
     
-    console.log(`start: ${start} | end: ${end} | primes: ${primes}`)
-    
-    for(number of primes) { result *= number }
-  } return result
+    if( next === 1n || next === 2n ) { next++ }
+    else { next = next + 1n + mod }
+  } return next
   
 }
 
-function getNextPrimeNumber(prime) {
+function getPreviousPrimeNumber(prime, isInt = false) {
   
+  if(prime <= 2n && !isInt) { return null }
+
   let p = BigInt(prime)
-  let next = p % 2n === 0n ? p + 1n : p + 2n
-  const check = isPrimeNumber(p)
+  let next = p - 1n
   
-  if(!check) { while (!isPrimeNumber(p)) { p += 1n } return p }
-  
-  while (!isPrimeNumber(next)) { next += 2n } return next
+  while (!isPrimeNumber(next, isInt)) { 
+    const mod = (next < 0n) ? ( (next % 2n) * -1n) : next % 2n
+    
+    if( -2 <= next <= 3 && next !== -1 ) { next-- }
+    else { next = next - 1n - mod }
+  } return next
   
 }

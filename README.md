@@ -11,5 +11,7 @@ Hello guys, this is my personal prime numbers studies!
 > from a maximum interval of 2000, get all twins prime numbers
 * **getPrimorial** _(prime, first?)__ :
 > calc the primorial of a prime number
-* **getNextPrimeNumber** _(prime)__ :
+* **getNextPrimeNumber** _(prime, isInt?)__ :
 > get the next prime number
+* **getPreviousPrimeNumber** _(prime, isInt?)__ :
+> get the previous prime number

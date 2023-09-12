@@ -1,4 +1,4 @@
-# Prime-Numbers
+# Prime-Numberss
 Hello guys, this is my personal prime numbers studies!
 
 ## Actual functions:

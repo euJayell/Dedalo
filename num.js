@@ -98,12 +98,40 @@ function getPreviousPrimeNumber(prime, isInt = false) {
 *
 PRIME NUMBERS */
 
-function fibonacciSequence(length) {
-  
+
+/* FIBONACCI SEQUENCE
+*
+*/
+
+function getFibonacciNumber(pos) {
+  if(pos === 0) {return false }
+  return ((((1 + Math.sqrt(5))/2)**pos - ((1 - Math.sqrt(5))/2)**pos)/Math.sqrt(5)).toFixed(0)
+}
+
+function isFibonacci(number, rValue = false) {
+  const v1 = Math.sqrt(5*number**2 + 4)
+  const v2 = Math.sqrt(5*number**2 - 4)
+  if(Number.isInteger(v1) || Number.isInteger(v2)) { 
+    return rValue === false ? true : Number.isInteger(v1) ? v1 : v2
+  } else { return false }
+}
+
+function getFibonacciPos(number) {
+  if(isFibonacci(number)) {
+    const pow = isFibonacci(number, true)
+    return Math.floor(
+      Math.log(((1 + Math.sqrt(5)) / 2) * (number * Math.sqrt(5) + Math.sqrt(5 * (number ** 2) + 4 * (-1) ** pow))) /
+        Math.log((1 + Math.sqrt(5)) / 2)) - 2
+  }
+}
+
+function fibonacciSequence(length, start = 0, isPos = false) {
   if(length < 0) { return undefined }
-  let fibonacci = length === 1 ? [0] : (length === 0) ? [] : [0, 1]
   
-  for(let i = 1; i < length; i++) {
-    if(fibonacci[i] === undefined){ fibonacci.push(fibonacci[i-1] + fibonacci[i-2]) }
+  const s = isPos ? getFibonacciPos(start) : start
+  let fibonacci = []
+  
+  for(let i = 1 + s; i <= length + s; i++) {
+    fibonacci.push(getFibonacciNumber(i))
   } return fibonacci
 }
